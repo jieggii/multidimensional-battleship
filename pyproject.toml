@@ -1,0 +1,20 @@
+[project]
+name = "mdbattleship"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "jieggii", email = "jieggii@protonmail.com"},
+]
+dependencies = []
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "matplotlib>=3.8.3",
+]
