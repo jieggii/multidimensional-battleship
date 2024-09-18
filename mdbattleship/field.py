@@ -1,18 +1,10 @@
 import typing
-from enum import Enum
 
 from mdbattleship.battleship import Battleship
 from mdbattleship.exceptions import UnexpectedOrderException, ObjectKind, BattleshipCollisionException
 from mdbattleship.md_utils import init_multidimensional_list, print_multidimensional_list
+from mdbattleship.dot import Dot
 from mdbattleship import md_utils
-
-
-
-class Dot(int, Enum):
-    EMPTY = 0
-    BATTLESHIP = 1
-    BATTLESHIP_DAMAGED = 2
-    BATTLESHIP_DESTROYED = 3
 
 
 class Field:
@@ -92,7 +84,7 @@ class Field:
 
         # check neighbours:
         for dot in neighbours:
-            if self.get_dot(dot) in (Dot.BATTLESHIP, Dot.BATTLESHIP_DAMAGED, Dot.BATTLESHIP_DESTROYED):
+            if self.get_dot(dot) in (Dot.BATTLESHIP.value, Dot.BATTLESHIP_DAMAGED.value, Dot.BATTLESHIP_DESTROYED.value):
                 return True
         return False
 
@@ -116,3 +108,6 @@ class Field:
             if self.get_dot(tuple(current_dot)) == Dot.BATTLESHIP:
                 raise BattleshipCollisionException(f"there is already a battleship in {tuple(current_dot)}")
             self.set_dot(tuple(current_dot), Dot.BATTLESHIP)
+
+    def get_map(self):
+        pass
